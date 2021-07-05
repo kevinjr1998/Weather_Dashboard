@@ -5,10 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="Assets/style.css">
 </head>
-<body>
+<body class="p-2">
+    <header> 
+        <h1>
+            Weather Dashboard
+        </h1> 
+     </header>
+     <aside class = "float-left col-3 "> Lorem ipsum dolor, sit amet consectetur adipisicing elit. A cumque reprehenderit adipisci ad, necessitatibus ut excepturi est doloribus animi laudantium. Quia temporibus eveniet fugit nulla blanditiis quos labore, quasi non!</aside>
+     <div class="jumbotron col-9 float-right" id="Weather_Main">
+         
+        
+        
+        <div class ="col-6 float-left">
+            <div id="City_Name"> </div>
+            <div id="City_Temp"> </div>
+            <div id="City_Wind"> </div>
+            <div id="City_Humidity"> </div>
+            <div id="UV_Container">
+                <div class="d-inline" id="City_UV"> </div>
+                <div class="d-inline" id="UV_Data"> </div>
+            </div>
+        </div>
+         
+        <div class ="col-6 float-right"> 
+            <img id="Weather_Icon"></img>
+        </div>
+    </div>
 
+    <div id = "Weather_Future" class = "col-9 float-right justify-content-between"> 
+        <div class = "col-2 d-inline-flex "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo praesentium nesciunt in sequi sunt eius tempora. Nihil, cumque rerum non, voluptatum quo pariatur libero, necessitatibus incidunt temporibus minus odio iure!</div>
+        <div class = "col-2 d-inline-flex "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo praesentium nesciunt in sequi sunt eius tempora. Nihil, cumque rerum non, voluptatum quo pariatur libero, necessitatibus incidunt temporibus minus odio iure!</div>
+        <div class = "col-2 d-inline-flex "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo praesentium nesciunt in sequi sunt eius tempora. Nihil, cumque rerum non, voluptatum quo pariatur libero, necessitatibus incidunt temporibus minus odio iure!</div>
+        <div class = "col-2 d-inline-flex "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo praesentium nesciunt in sequi sunt eius tempora. Nihil, cumque rerum non, voluptatum quo pariatur libero, necessitatibus incidunt temporibus minus odio iure!</div>
+        <div class = "col-2 d-inline-flex "> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo praesentium nesciunt in sequi sunt eius tempora. Nihil, cumque rerum non, voluptatum quo pariatur libero, necessitatibus incidunt temporibus minus odio iure!</div>
+    </div>
+
+    <section > 
+
+    
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./Assets/script.js"></script>
 </body>
 </html>
