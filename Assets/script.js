@@ -43,13 +43,22 @@ function getCityWeather() {
                 cityTemp.textContent = "Temperature: " + oneCallData.current.temp + "°C";
                 cityWind.textContent = "Wind Speed: " + oneCallData.current.wind_speed + "m/s";
                 cityHum.textContent  = "Humidity: " + oneCallData.current.humidity + "%";
-                cityUV.textContent = "UV Index:";
+                cityUV.textContent = "UV Index: ";
+
 
                 var UVData = document.createElement("div");
-                UVData.setAttribute("class", "d-inline");
+                var UVIndex = oneCallData.current.uvi;
+                UVData.textContent = UVIndex;
+                
+                if( UVIndex >= 0 && UVIndex <= 2 ){
+                    UVData.setAttribute("class", "d-inline favourable");
+                }else if(UVIndex>2 && UVIndex <= 6){
+                        UVData.setAttribute("class", "d-inline moderate"); 
+                    } else if(UVIndex > 6){
+                        UVData.setAttribute("class", "d-inline severe"); 
+                    }
+
                 UVData.setAttribute("id", "UV_Data");    
-              
-                UVData.textContent = oneCallData.current.uvi;
                 cityUV.appendChild(UVData);
 
 

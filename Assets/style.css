@@ -22,3 +22,15 @@ h1{
     width: 19%;
     padding: 1%;
 }
+
+.favourable{
+    background-color: green;
+}
+
+.moderate{
+    background-color: yellow;
+}
+
+.severe{
+    background-color: red;
+}
