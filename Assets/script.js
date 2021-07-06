@@ -6,11 +6,13 @@ var cityHum = document.getElementById("City_Humidity");
 var cityUV = document.getElementById("City_UV");
 var UVData = document.getElementById("UV_Data");
 var weatherIcon = document.getElementById("Weather_Icon");
+var futureContainer = document.getElementById("Weather_Future");
+
 
 
 var APIKey = "3e317835aa99c5522639a26e16f09c5";
 
-function getApi() {
+function getCityWeather() {
     // fetch request gets a list of all the repos for the node.js organization
     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=3e317835aa99c5522639a26e16f09c51';
   
@@ -42,7 +44,54 @@ function getApi() {
                 cityWind.textContent = "Wind Speed: " + oneCallData.current.wind_speed + "m/s";
                 cityHum.textContent  = "Humidity: " + oneCallData.current.humidity + "%";
                 cityUV.textContent = "UV Index:";
+
+                var UVData = document.createElement("div");
+                UVData.setAttribute("class", "d-inline");
+                UVData.setAttribute("id", "UV_Data");    
+              
                 UVData.textContent = oneCallData.current.uvi;
+                cityUV.appendChild(UVData);
+
+
+                for(var i = 1; i < 6; i++){
+
+                
+
+                    var future1 = document.createElement("div");
+                    var future1Weather = oneCallData.daily[i];
+
+                    var future1date = document.createElement("div");
+                    future1date.setAttribute("class", "Future_Date");
+                    futureDate = moment.unix(future1Weather.dt).format("DD/MM/YYYY");
+                    future1date.textContent = futureDate;
+
+                    future1.appendChild(future1date);
+                
+
+                    var future1Temp = document.createElement("div");
+                    future1Temp.setAttribute("class", "Future_Temp ");
+                    future1Temp.textContent = "Temp: " + future1Weather.temp.day + "°C";
+                    future1.appendChild(future1Temp);
+
+
+                    var future1IconCont = document.createElement("img");
+                    future1IconCont.setAttribute("class", "Future_Icon");
+                    var futureIcon = "http://openweathermap.org/img/w/" + future1Weather.weather[0].icon + ".png";
+                    future1IconCont.setAttribute("src", futureIcon);
+                    future1.appendChild(future1IconCont);
+
+
+                    var future1Hum = document.createElement("div");
+                    future1Hum.setAttribute("class", "Future_Hum ");
+                    future1Hum.textContent = "Hum: " + future1Weather.humidity + "%";
+                    future1.appendChild(future1Hum);
+                
+                    future1.setAttribute("class", "d-inline-flex flex-column border rounded futureDiv");
+
+                    futureContainer.appendChild(future1);
+
+                }
+
 
 
             })
@@ -53,4 +102,7 @@ function getApi() {
       });
   }
 
-  getApi();
+
+
+
+  getCityWeather();
