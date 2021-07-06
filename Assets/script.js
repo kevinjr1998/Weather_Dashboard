@@ -7,14 +7,21 @@ var cityUV = document.getElementById("City_UV");
 var UVData = document.getElementById("UV_Data");
 var weatherIcon = document.getElementById("Weather_Icon");
 var futureContainer = document.getElementById("Weather_Future");
+var cityForm = $("#City_Form");
+var cityFormInput = $("#City_Form_Input");
 
+
+
+var cityNameHistory = [];
 
 
 var APIKey = "3e317835aa99c5522639a26e16f09c5";
 
-function getCityWeather() {
+function getCityWeather(cityName) {
     // fetch request gets a list of all the repos for the node.js organization
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&appid=3e317835aa99c5522639a26e16f09c51';
+    futureContainer.innerHTML = '';
+
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&appid=3e317835aa99c5522639a26e16f09c51';
   
     fetch(requestUrl)
       .then(function (response) {
@@ -41,7 +48,7 @@ function getCityWeather() {
             .then(function (oneCallData) {
                 console.log(oneCallData);
                 cityTemp.textContent = "Temperature: " + oneCallData.current.temp + "°C";
-                cityWind.textContent = "Wind Speed: " + oneCallData.current.wind_speed + "m/s";
+                cityWind.textContent = "Wind Speed: " + oneCallData.current.wind_speed + " m/s";
                 cityHum.textContent  = "Humidity: " + oneCallData.current.humidity + "%";
                 cityUV.textContent = "UV Index: ";
 
@@ -113,5 +120,33 @@ function getCityWeather() {
 
 
 
+ function citySearch(event) {
+    event.preventDefault();
 
-  getCityWeather();
+    if(cityFormInput.val() == ""){
+        alert("Please Enter a City Name!");
+        return;
+    }
+
+    var cityNameSearched = cityFormInput.val();
+    cityNameSearched.trim();
+
+    getCityWeather(cityNameSearched);
+
+
+    cityNameHistory.push(cityNameSearched);
+    localStorage.setItem('City_Name_History' ,JSON.stringify(cityNameHistory));
+
+
+
+
+
+ }
+
+
+
+cityForm.on("submit", citySearch);
+
+
+
+// getCityWeather();
