@@ -20,7 +20,8 @@ h1{
 
 .futureDiv{
     width: 19%;
-    padding: 1%;
+    margin: 0 .2rem;
+    background-color: skyblue;
 }
 
 .favourable{
@@ -35,7 +36,33 @@ h1{
     background-color: red;
 }
 
+.Five_Day{
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.Search_Hist_City{
+    text-align: center;
+    margin: .5rem 1rem;
+    background-color: green;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+
 #Weather_Icon{
     width: 40%;
     height: 40%;
+}
+
+#Weather_Main{
+    visibility: hidden;
+}
+
+#Search_History_Div{
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: center;
+    width: 100%;
 }

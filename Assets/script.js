@@ -9,16 +9,41 @@ var weatherIcon = document.getElementById("Weather_Icon");
 var futureContainer = document.getElementById("Weather_Future");
 var cityForm = $("#City_Form");
 var cityFormInput = $("#City_Form_Input");
+var searchHistory = document.getElementById("Search_History_Div");
 
 
 
+var searchHistoryLocal = JSON.parse(localStorage.getItem("City_Name_History"));
+
+var searchHistoryLocalHolder = searchHistoryLocal;
 var cityNameHistory = [];
+
+searchHistoryLocal = JSON.parse(localStorage.getItem("City_Name_History"));
+
+
+for (var i = 0; i < searchHistoryLocal.length; i++){
+    cityNameHistory.push(searchHistoryLocalHolder[i]);
+}
+
+cityNameString = JSON.stringify(cityNameHistory);
+
+localStorage.setItem("City_Name_History", cityNameString);
+
+
+for (var i = 0; i < cityNameHistory.length; i++){
+var cityHistory = document.createElement("div");
+cityHistory.setAttribute("class", "Search_Hist_City");
+cityHistory.textContent = cityNameHistory[i];
+searchHistory.appendChild(cityHistory);
+        
+    }
+
+
 
 
 var APIKey = "3e317835aa99c5522639a26e16f09c5";
 
 function getCityWeather(cityName) {
-    // fetch request gets a list of all the repos for the node.js organization
     futureContainer.innerHTML = '';
 
     var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&appid=3e317835aa99c5522639a26e16f09c51';
@@ -29,6 +54,8 @@ function getCityWeather(cityName) {
       })
       .then(function (data) {
         console.log(data);
+
+        mainWeather.style.visibility = "visible";
         var weatherDate = moment.unix(data.dt).format("DD/MM/YYYY");
         nameOfCity.textContent = data.name + " " + "(" + weatherDate + ")";
 
@@ -68,6 +95,13 @@ function getCityWeather(cityName) {
                 UVData.setAttribute("id", "UV_Data");    
                 cityUV.appendChild(UVData);
 
+                var fiveDayForecast = document.createElement("div");
+                fiveDayForecast.setAttribute("class","col-9 d-block pl-0 Five_Day");
+                fiveDayForecast.textContent = "Five Day Forecast: "
+
+                futureContainer.appendChild(fiveDayForecast)
+
+
 
                 for(var i = 1; i < 6; i++){
 
@@ -103,8 +137,11 @@ function getCityWeather(cityName) {
                     future1.appendChild(future1Hum);
                 
                     future1.setAttribute("class", "d-inline-flex flex-column border rounded futureDiv");
-
                     futureContainer.appendChild(future1);
+
+                    
+
+                    
 
                 }
 
@@ -123,10 +160,13 @@ function getCityWeather(cityName) {
  function citySearch(event) {
     event.preventDefault();
 
+
     if(cityFormInput.val() == ""){
         alert("Please Enter a City Name!");
         return;
     }
+
+    
 
     var cityNameSearched = cityFormInput.val();
     cityNameSearched.trim();
@@ -135,9 +175,20 @@ function getCityWeather(cityName) {
 
 
     cityNameHistory.push(cityNameSearched);
+
+    cityFormInput.val("");
+
+    searchHistory.innerHTML = "";
+                    
+     for(var i = 0; i < cityNameHistory.length; i++){
+        var city = document.createElement("div");
+        city.setAttribute("class", "Search_Hist_City");
+        city.textContent = cityNameHistory[i];
+        searchHistory.appendChild(city);
+    }
+
+
     localStorage.setItem('City_Name_History' ,JSON.stringify(cityNameHistory));
-
-
 
 
 
