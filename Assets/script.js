@@ -11,20 +11,18 @@ var cityForm = $("#City_Form");
 var cityFormInput = $("#City_Form_Input");
 var searchHistory = document.getElementById("Search_History_Div");
 
-
-
 var searchHistoryLocal = JSON.parse(localStorage.getItem("City_Name_History"));
 
-var searchHistoryLocalHolder = searchHistoryLocal;
 var cityNameHistory = [];
 
-searchHistoryLocal = JSON.parse(localStorage.getItem("City_Name_History"));
+var searchHistoryLocalHolder = searchHistoryLocal;
 
+if (searchHistoryLocal !== null){
 
-for (var i = 0; i < searchHistoryLocal.length; i++){
-    cityNameHistory.push(searchHistoryLocalHolder[i]);
+    for (var i = 0; i < searchHistoryLocal.length; i++){
+        cityNameHistory.push(searchHistoryLocal[i]);
+    }
 }
-
 cityNameString = JSON.stringify(cityNameHistory);
 
 localStorage.setItem("City_Name_History", cityNameString);
