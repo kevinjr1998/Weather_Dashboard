@@ -31,7 +31,7 @@ localStorage.setItem("City_Name_History", cityNameString);
 
 
 for (var i = 0; i < cityNameHistory.length; i++){
-var cityHistory = document.createElement("div");
+var cityHistory = document.createElement("button");
 cityHistory.setAttribute("class", "Search_Hist_City");
 cityHistory.textContent = cityNameHistory[i];
 searchHistory.appendChild(cityHistory);
@@ -181,7 +181,7 @@ function getCityWeather(cityName) {
     searchHistory.innerHTML = "";
                     
      for(var i = 0; i < cityNameHistory.length; i++){
-        var city = document.createElement("div");
+        var city = document.createElement("button");
         city.setAttribute("class", "Search_Hist_City");
         city.textContent = cityNameHistory[i];
         searchHistory.appendChild(city);
