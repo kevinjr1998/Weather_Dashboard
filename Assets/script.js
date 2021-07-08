@@ -185,17 +185,18 @@ function getCityWeather(cityName) {
         searchHistory.appendChild(city);
     }
 
-
     localStorage.setItem('City_Name_History' ,JSON.stringify(cityNameHistory));
-
-
 
  }
 
+$(searchHistory).on("click", "button", function(event){
+    var buttonVal = $(event.target).text();
 
+    getCityWeather(buttonVal);
+
+
+
+})
 
 cityForm.on("submit", citySearch);
 
-
-
-// getCityWeather();
