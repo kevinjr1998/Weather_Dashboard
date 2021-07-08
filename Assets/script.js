@@ -108,19 +108,15 @@ function getCityWeather(cityName) {
                     var future1 = document.createElement("div");
                     var future1Weather = oneCallData.daily[i];
 
+                    var [lb1, lb2, lb3, lb4, lb5] = [document.createElement("br"), document.createElement("br"), document.createElement("br"), document.createElement("br"), document.createElement("br")];
+
                     var future1date = document.createElement("div");
                     future1date.setAttribute("class", "Future_Date");
                     futureDate = moment.unix(future1Weather.dt).format("DD/MM/YYYY");
                     future1date.textContent = futureDate;
-
                     future1.appendChild(future1date);
-                
 
-                    var future1Temp = document.createElement("div");
-                    future1Temp.setAttribute("class", "Future_Temp ");
-                    future1Temp.textContent = "Temp: " + future1Weather.temp.day + "°C";
-                    future1.appendChild(future1Temp);
-
+                    future1.appendChild(lb1);
 
                     var future1IconCont = document.createElement("img");
                     future1IconCont.setAttribute("class", "Future_Icon");
@@ -128,11 +124,29 @@ function getCityWeather(cityName) {
                     future1IconCont.setAttribute("src", futureIcon);
                     future1.appendChild(future1IconCont);
 
+                    future1.appendChild(lb2);
 
+                    var future1Temp = document.createElement("div");
+                    future1Temp.setAttribute("class", "Future_Temp ");
+                    future1Temp.textContent = "Temperature: " + future1Weather.temp.day + "°C";
+                    future1.appendChild(future1Temp);
+
+                    
+                    future1.appendChild(lb3);
+
+                    var future1wind = document.createElement("div");
+                    future1wind.setAttribute("class", "Future_Wind");
+                    future1wind.textContent = "Wind \speed: " + future1Weather.wind_speed + " m/s"
+                    future1.appendChild(future1wind);
+
+                    future1.appendChild(lb4);
+               
                     var future1Hum = document.createElement("div");
                     future1Hum.setAttribute("class", "Future_Hum ");
-                    future1Hum.textContent = "Hum: " + future1Weather.humidity + "%";
+                    future1Hum.textContent = "Humidity: " + future1Weather.humidity + "%";
                     future1.appendChild(future1Hum);
+
+                    future1.appendChild(lb5);
                 
                     future1.setAttribute("class", "d-inline-flex flex-column border rounded futureDiv");
                     futureContainer.appendChild(future1);
@@ -193,8 +207,6 @@ $(searchHistory).on("click", "button", function(event){
     var buttonVal = $(event.target).text();
 
     getCityWeather(buttonVal);
-
-
 
 })
 

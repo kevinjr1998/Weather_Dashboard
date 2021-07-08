@@ -17,27 +17,32 @@
      <aside class = "float-left col-3 "> 
         <form id="City_Form">
             <div class="form-group">
-                <label class = "w-100 text-center" for="City_Form_Input">City Search Bar</label>
+                <label class = "w-100 text-center font-weight-bold city_input_label" for="City_Form_Input">Search for a City: </label>
                 <input type="text" class="form-control" id="City_Form_Input" placeholder="Enter City Name">
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
-        <br>
+        <hr>
+        <div class="Search_Hist_Head"> Search History: </div>
         <div class="overflow-auto float-left flex-reverse " id="Search_History_Div"> </div>
-
+     
 
 
      </aside>
-     <div class="jumbotron col-9 float-right" id="Weather_Main">
+     <div class="jumbotron col-9 float-right pl-1" id="Weather_Main">
          
         
         
         <div class ="col-6 float-left">
             <div id="City_Name"> </div>
+            <br>
             <div id="City_Temp"> </div>
+            <br>
             <div id="City_Wind"> </div>
+            <br>
             <div id="City_Humidity"> </div>
             <div id="UV_Container">
+                <br>
             <div class="d-inline" id="City_UV"> </div>
             </div>
         </div>
