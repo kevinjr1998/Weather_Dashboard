@@ -5,16 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <!-- bootstrap css linked for styling, own stylesheet linked after -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="Assets/style.css">
 </head>
 <body class="p-2">
+    <!-- page header -->
     <header> 
         <h1>
             Weather Dashboard
         </h1> 
      </header>
+     <!-- aside declared to hold search bar and search history -->
      <aside class = "float-left col-3"> 
+         <!-- form for city name input  -->
         <form id="City_Form">
             <div class="form-group">
                 <label class = "w-100 text-center font-weight-bold city_input_label" for="City_Form_Input">Search for a City: </label>
@@ -22,12 +26,15 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Submit</button>
         </form>
-        <hr>
+        <!-- line break to seperate search form from search history -->
+        <hr> 
         <div class="Search_Hist_Head"> Search History: </div>
+        <!-- search history given overflow auto to give scroll property, set to flex column reverse so most recent search at top -->
         <div class="overflow-auto float-left d-flex flex-column-reverse" id="Search_History_Div"> </div>
      
 
      </aside>
+     <!-- the element below holds the current weather. below elements hard coded onto web page-->
      <div class="jumbotron col-9 float-right pl-1" id="Weather_Main">
          
         
@@ -45,21 +52,17 @@
             <div class="d-inline" id="City_UV"> </div>
             </div>
         </div>
-         
+         <!-- element will hold the icon that represents the weather -->
         <div class ="col-6 float-right"> 
             <img id="Weather_Icon"></img>
         </div>
     </div>
 
+    <!-- will hold the future weather -->
     <div id = "Weather_Future" class = "col-9 float-right justify-content-between"> 
        
     </div>
-
-    <section > 
-
-    
-    </section>
-
+    <!-- third party scripts linked below with own script at bottom. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
