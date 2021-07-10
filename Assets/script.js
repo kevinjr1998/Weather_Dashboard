@@ -183,7 +183,7 @@ function getCityWeather(cityName) {
 
     getCityWeather(cityNameSearched); //runs function to get weather passing the city name
 
-    cityNameHistory.push(cityNameSearched); //appends searched city to cityNameHistory element
+    cityNameHistory.unshift(cityNameSearched); //appends searched city to cityNameHistory element
 
     cityFormInput.val(""); //cleares the input after runing get city weather
 
