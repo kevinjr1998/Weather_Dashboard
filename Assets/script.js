@@ -44,8 +44,9 @@ var APIKey = "3e317835aa99c5522639a26e16f09c5";
 function getCityWeather(cityName) {
     futureContainer.innerHTML = '';
 
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&units=metric&appid=3e317835aa99c5522639a26e16f09c51';
-  
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=3e317835aa99c5522639a26e16f09c51`;
+        // var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=london&cnt=5&appid=3e317835aa99c5522639a26e16f09c51';
+
     fetch(requestUrl)
       .then(function (response) {
         return response.json();
@@ -56,7 +57,7 @@ function getCityWeather(cityName) {
         var cityLon = data.coord.lon;
         var cityLat = data.coord.lat;
 
-        var oneCallURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+ cityLat + "&lon=" +cityLon+ "&units=metric&appid=3e317835aa99c5522639a26e16f09c51"
+        var oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLat}&lon=${cityLon}&units=metric&appid=3e317835aa99c5522639a26e16f09c51`;
 
         fetch(oneCallURL)
             .then(function(oneCallRes){
@@ -68,14 +69,14 @@ function getCityWeather(cityName) {
 
                 mainWeather.style.visibility = "visible";
                 var weatherDate = moment.unix(currentForecast.dt).format("DD/MM/YYYY");
-                nameOfCity.textContent = data.name + " " + "(" + weatherDate + ")";
+                nameOfCity.textContent = `${data.name} (${weatherDate})`;
 
-                var weatherIconURL = "https://openweathermap.org/img/w/" + currentForecast.weather[0].icon + ".png";
+                var weatherIconURL = `https://openweathermap.org/img/w/${currentForecast.weather[0].icon}.png`;
                 weatherIcon.setAttribute("src", weatherIconURL);
 
                 console.log(oneCallData);
-                cityTemp.textContent = "Temperature: " + currentForecast.temp.day + "°C";
-                cityWind.textContent = "Wind Speed: " + currentForecast.wind_speed + " m/s";
+                cityTemp.textContent = `Temperature: ${currentForecast.temp.day}°C`;
+                cityWind.textContent = `Wind Speed: ${currentForecast.wind_speed} m/s`;
                 cityHum.textContent  = "Humidity: " + currentForecast.humidity + "%";
                 cityUV.textContent = "UV Index: ";
 
@@ -122,7 +123,7 @@ function getCityWeather(cityName) {
 
                     var future1IconCont = document.createElement("img");
                     future1IconCont.setAttribute("class", "Future_Icon");
-                    var futureIcon = "https://openweathermap.org/img/w/" + future1Weather.weather[0].icon + ".png";
+                    var futureIcon = `https://openweathermap.org/img/w/${future1Weather.weather[0].icon}.png`;
                     future1IconCont.setAttribute("src", futureIcon);
                     future1.appendChild(future1IconCont);
 
@@ -130,7 +131,7 @@ function getCityWeather(cityName) {
 
                     var future1Temp = document.createElement("div");
                     future1Temp.setAttribute("class", "Future_Temp ");
-                    future1Temp.textContent = "Temperature: " + future1Weather.temp.day + "°C";
+                    future1Temp.textContent = `Temperature: ${future1Weather.temp.day}°C`;
                     future1.appendChild(future1Temp);
 
                     
@@ -138,14 +139,14 @@ function getCityWeather(cityName) {
 
                     var future1wind = document.createElement("div");
                     future1wind.setAttribute("class", "Future_Wind");
-                    future1wind.textContent = "Wind \speed: " + future1Weather.wind_speed + " m/s"
+                    future1wind.textContent = `Wind Speed: ${future1Weather.wind_speed} m/s`
                     future1.appendChild(future1wind);
 
                     future1.appendChild(lb4);
                
                     var future1Hum = document.createElement("div");
                     future1Hum.setAttribute("class", "Future_Hum ");
-                    future1Hum.textContent = "Humidity: " + future1Weather.humidity + "%";
+                    future1Hum.textContent = `Humidity: " ${future1Weather.humidity}%`;
                     future1.appendChild(future1Hum);
 
                     future1.appendChild(lb5);
