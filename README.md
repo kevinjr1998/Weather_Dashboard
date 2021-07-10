@@ -6,7 +6,7 @@ This task involved making calls to a server API, in this case both Open Weather 
 
 ## Screenshot
 
-![Screenshot](./assets/Weather-Dashboard.png)
+![Screenshot](/assets/Weather-Dashboard.png)
 
 ## Link to Webpage 
 
