@@ -19,6 +19,12 @@ img{
     height: 60%;
 }
 
+aside{
+    background-color: blanchedalmond;
+    padding: .5rem 0;
+    border-radius: 5px;
+}
+
 
 #City_Name{
     font-size: 2rem;
@@ -88,8 +94,8 @@ img{
 
 
 #Weather_Icon{
-    width: 20%;
-    height: 20%;
+    width: 35%;
+    height: 35%;
 }
 
 #Weather_Main{
@@ -97,9 +103,10 @@ img{
 }
 
 #Search_History_Div{
-    display: flex;
+    /* display: flex;
     flex-direction: column-reverse;
     align-content: center;
+    justify-content: flex-end; */
     width: 100%;
     height: 50vh;
     border: 2px solid black;
@@ -109,4 +116,10 @@ img{
 
 #form-group label{
     font-size: 1.1rem;
+}
+
+#City_Form{
+    border: 2px solid black;
+    padding: .4rem;
+    border-radius: 5px;
 }

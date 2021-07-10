@@ -53,14 +53,6 @@ function getCityWeather(cityName) {
       .then(function (data) {
         console.log(data);
 
-        mainWeather.style.visibility = "visible";
-        var weatherDate = moment.unix(data.dt).format("DD/MM/YYYY");
-        nameOfCity.textContent = data.name + " " + "(" + weatherDate + ")";
-
-        var weatherIconURL = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
-        weatherIcon.setAttribute("src", weatherIconURL);
-
-
         var cityLon = data.coord.lon;
         var cityLat = data.coord.lat;
 
@@ -71,15 +63,25 @@ function getCityWeather(cityName) {
                 return oneCallRes.json();
             })
             .then(function (oneCallData) {
+
+                var currentForecast = oneCallData.daily[0];
+
+                mainWeather.style.visibility = "visible";
+                var weatherDate = moment.unix(currentForecast.dt).format("DD/MM/YYYY");
+                nameOfCity.textContent = data.name + " " + "(" + weatherDate + ")";
+
+                var weatherIconURL = "https://openweathermap.org/img/w/" + currentForecast.weather[0].icon + ".png";
+                weatherIcon.setAttribute("src", weatherIconURL);
+
                 console.log(oneCallData);
-                cityTemp.textContent = "Temperature: " + oneCallData.current.temp + "°C";
-                cityWind.textContent = "Wind Speed: " + oneCallData.current.wind_speed + " m/s";
-                cityHum.textContent  = "Humidity: " + oneCallData.current.humidity + "%";
+                cityTemp.textContent = "Temperature: " + currentForecast.temp.day + "°C";
+                cityWind.textContent = "Wind Speed: " + currentForecast.wind_speed + " m/s";
+                cityHum.textContent  = "Humidity: " + currentForecast.humidity + "%";
                 cityUV.textContent = "UV Index: ";
 
 
                 var UVData = document.createElement("div");
-                var UVIndex = oneCallData.current.uvi;
+                var UVIndex = currentForecast.uvi;
                 UVData.textContent = UVIndex;
                 
                 if( UVIndex >= 0 && UVIndex <= 2 ){
@@ -120,7 +122,7 @@ function getCityWeather(cityName) {
 
                     var future1IconCont = document.createElement("img");
                     future1IconCont.setAttribute("class", "Future_Icon");
-                    var futureIcon = "http://openweathermap.org/img/w/" + future1Weather.weather[0].icon + ".png";
+                    var futureIcon = "https://openweathermap.org/img/w/" + future1Weather.weather[0].icon + ".png";
                     future1IconCont.setAttribute("src", futureIcon);
                     future1.appendChild(future1IconCont);
 
