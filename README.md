@@ -8,6 +8,19 @@ This task involved making calls to a server API, in this case both Open Weather 
 
 ![Screenshot](Weather-Dashboard.png)
 
+![Gif](Weather-Dashboard.gif)
+
 ## Link to Webpage 
 
 [Link](https://kevinjr1998.github.io/Weather_Dashboard/)
+
+## License
+
+MIT
+
+## Contact Info 
+
+kevinryner@yahoo.co.uk
+
+
+
